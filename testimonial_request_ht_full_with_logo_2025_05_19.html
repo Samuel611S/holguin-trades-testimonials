@@ -298,20 +298,120 @@
         </div>
 
         <h4>Questions</h4>
-        <form action="https://submit-form.com/AwLKMKncF">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Name" required="" />
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Email" required="" />
-            <label for="message">Message</label>
-            <textarea
-              id="message"
-              name="message"
-              placeholder="Message"
-              required=""
-            ></textarea>
-            <button type="submit">Send</button>
-          </form>
+        <form action="https://submit-form.com/AwLKMKncF" method="POST" enctype="multipart/form-data">
+  <label for="name">Name</label>
+  <input type="text" id="name" name="name" placeholder="Name" maxlength="60" />
+
+  <label for="email">Email</label>
+  <input type="email" id="email" name="email" placeholder="Email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" />
+
+  <label for="industry">Industry</label>
+  <select id="industry" name="industry">
+    </select>
+
+  <label for="job-title">Job Title</label>
+  <input type="text" id="job-title" name="job-title" placeholder="Enter your job title" maxlength="80" />
+
+  <label for="country">Select your country</label>
+  <select id="country" name="country">
+    </select>
+
+  <label for="city">City</label>
+  <input type="text" id="city" name="city" placeholder="Enter your city" maxlength="50" />
+
+  <label for="rating">Rating</label>
+  <select id="rating" name="rating" required>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+  </select>
+
+  <label for="photo-upload">Add a face to your testimonial!</label>
+  <input type="file" id="photo-upload" name="photo-upload" accept="image/jpeg, image/png, image/gif, image/bmp, image/webp" />
+
+  <label for="media-upload">Video/Audio testimonial Upload</label>
+  <input type="file" id="media-upload" name="media-upload" accept="video/*, audio/*" />
+
+  <label for="service">Service</label>
+  <select id="service" name="service">
+    <option value="">Select a service for your testimonial</option>
+    <option value="Signal Alerts">Signal Alerts</option>
+    <option value="Coaching">Coaching</option>
+    <option value="Public/Motivational Events">Public/Motivational Events</option>
+    <option value="General">General</option>
+  </select>
+
+  <label for="testimonial">Testimonial</label>
+  <textarea id="testimonial" name="testimonial" placeholder="Type your testimonial here." required maxlength="1300"></textarea>
+
+  <input type="checkbox" id="consent" name="consent" checked required />
+  <label for="consent">By checking this box, I verify that I have read, understand and agree to the above statement</label>
+
+  <button type="submit">Send</button>
+</form>
+
+<script>
+  // Populate Industry dropdown
+  const industrySelect = document.getElementById('industry');
+  const industryOptions = [
+    "", // Default empty option
+    "Agriculture", "Automotive", "Communication", "Construction", "Education", "Energy",
+    "Finance", "Food & Beverage", "Healthcare", "Hospitality", "Manufacturing",
+    "Media & Entertainment", "Mining", "Pharmaceutical", "Real Estate", "Retail",
+    "Technology", "Transportation", "Utilities"
+  ];
+  industryOptions.forEach(optionText => {
+    const option = document.createElement('option');
+    option.value = optionText;
+    option.textContent = optionText;
+    industrySelect.appendChild(option);
+  });
+
+  // Populate Country dropdown
+  const countrySelect = document.getElementById('country');
+  const countries = [
+    "United States", "Canada", "Mexico", "United Kingdom", "Germany", "France", "Italy", "Spain",
+    "Australia", "New Zealand", "Japan", "China", "India", "Brazil", "Argentina", "South Africa"
+    // Add more countries as needed
+  ];
+  countries.forEach(country => {
+    const option = document.createElement('option');
+    option.value = country;
+    option.textContent = country;
+    countrySelect.appendChild(option);
+  });
+  countrySelect.value = "United States"; // Set default value
+
+  // File type validation for photo upload
+  const photoUpload = document.getElementById('photo-upload');
+  photoUpload.addEventListener('change', function() {
+    const file = this.files[0];
+    if (file) {
+      const fileType = file.type;
+      const validImageTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/bmp', 'image/webp'];
+      if (!validImageTypes.includes(fileType)) {
+        alert('Invalid file type. Please upload a JPEG, PNG, GIF, BMP, or WEBP image.');
+        this.value = ''; // Clear the input
+      }
+    }
+  });
+
+  // File type validation for video/audio upload
+  const mediaUpload = document.getElementById('media-upload');
+  mediaUpload.addEventListener('change', function() {
+    const file = this.files[0];
+    if (file) {
+      const fileType = file.type;
+      const validMediaTypes = ['video/', 'audio/']; // Check for general video/audio types
+      if (!validMediaTypes.some(type => fileType.startsWith(type))) {
+        alert('Invalid file type. Please upload a video or audio file.');
+        this.value = ''; // Clear the input
+      }
+    }
+  });
+</script>
 
         <div class="thank-you">
             <h4>THANK YOU</h4>
