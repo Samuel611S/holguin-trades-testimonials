@@ -417,20 +417,10 @@
                 const turnstileResponse = await turnstile.getResponse();
                 formData.append('cf-turnstile-response', turnstileResponse);
 
-                // Convert FormData to JSON
-                const formDataObj = {};
-                formData.forEach((value, key) => {
-                    formDataObj[key] = value;
-                });
-
-                // Submit the form
+                // Submit the form directly with FormData
                 const response = await fetch('https://submit-form.com/AwLKMKncF', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify(formDataObj)
+                    body: formData
                 });
 
                 if (response.ok) {
