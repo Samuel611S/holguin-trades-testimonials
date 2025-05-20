@@ -776,16 +776,8 @@
             submitButton.innerHTML = '<span class="spinner"></span> Submitting...';
             
             try {
-                // Temporarily disable Turnstile check for testing
-                // const turnstileResponse = document.querySelector('[name="cf-turnstile-response"]').value;
-                // if (!turnstileResponse) {
-                //     alert('Please complete the CAPTCHA verification');
-                //     return;
-                // }
-                
                 // Create FormData object
                 const formData = new FormData(this);
-                // formData.append('cf-turnstile-response', turnstileResponse);
                 
                 // Log form data for debugging
                 console.log('Submitting form data:', Object.fromEntries(formData));
@@ -794,7 +786,7 @@
                 const response = await fetch('https://submit-form.com/AwLKMKncF', {
                     method: 'POST',
                     body: formData,
-                    mode: 'no-cors', // This is important for CORS
+                    // Remove no-cors mode to see actual response
                     headers: {
                         'Accept': 'application/json'
                     }
@@ -803,8 +795,12 @@
                 // Log response for debugging
                 console.log('Form submission response:', response);
                 
-                // Since we're using no-cors, we can't check response.ok
-                // Instead, we'll assume success if no error is thrown
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const result = await response.json();
+                console.log('Form submission result:', result);
                 
                 // Show thank you modal
                 modal.style.display = "flex";
