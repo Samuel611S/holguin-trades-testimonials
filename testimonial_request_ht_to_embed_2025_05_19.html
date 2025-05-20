@@ -41,6 +41,22 @@
             animation: slideUp 0.5s ease-out;
         }
 
+        .logo {
+            text-align: center;
+            margin-bottom: 2rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .logo img {
+            max-width: 210px;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+
         h1 {
             color: var(--primary-color);
             text-align: center;
@@ -201,18 +217,27 @@
         }
 
         .thank-you {
-            text-align: center;
-            margin-top: 2rem;
-            padding: 1.5rem;
-            background: #ebf8ff;
-            border-radius: 8px;
-            border-left: 4px solid var(--success-color);
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
         }
 
         .thank-you p {
             font-size: 1.1rem;
             font-weight: 500;
             color: var(--primary-color);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         @keyframes slideUp {
@@ -229,6 +254,9 @@
         @media (max-width: 768px) {
             .container {
                 padding: 1rem;
+            }
+            .logo img {
+                max-width: 180px;
             }
             h1 {
                 font-size: 2rem;
@@ -268,48 +296,33 @@
                 <li>The session that John Doe put together was fantastic. He was calm and interacted with all of us.</li>
             </ul>
         </div>
+        <form action="https://submit-form.com/AwLKMKncF">
+            <input type="hidden" name="_redirect" value="https://holguintrades.com/thank-you" />
+            <input type="text" name="confirm_code_field" style="display: none;" autocomplete="off" />
 
-        <h4>Questions</h4>
-        <form action="https://submit-form.com/AwLKMKncF" method="POST" enctype="multipart/form-data">
             <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Your name" required />
+            <input type="text" id="name" name="name" maxlength="60" placeholder="Enter your name" required/>
 
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="your.email@example.com" required />
+            <input type="email" id="email" name="email" maxlength="60" placeholder="Enter your email" required />
 
             <label for="industry">Industry</label>
-            <select id="industry" name="industry" required>
-                <option value="">Select an industry</option>
-                <option value="Accounting">Accounting</option>
-                <option value="Finance">Finance</option>
-                <option value="IT">IT</option>
-                <option value="Other">Other</option>
+            <select id="industry" name="industry">
+            <option value="">-- Select an Industry --</option>
             </select>
 
             <label for="jobTitle">Job Title</label>
-            <input type="text" id="jobTitle" name="jobTitle" placeholder="Your job title" />
+            <input type="text" id="jobTitle" name="jobTitle" maxlength="80" placeholder="Enter your job title" />
 
             <label for="country">Country</label>
-            <select id="country" name="country" required>
-                <option value="United States">United States</option>
-                <option value="Canada">Canada</option>
-                <option value="Other">Other</option>
+            <select id="country" name="country">
+            <!-- Country options will be populated via JS -->
             </select>
-
             <label for="city">City</label>
-            <input type="text" id="city" name="city" placeholder="Your city" />
+            <input type="text" id="city" name="city" maxlength="50" placeholder="Enter your city" />
 
-            <label for="service">Service</label>
-            <select id="service" name="service" required>
-                <option value="">Select a service</option>
-                <option value="Signal Alerts">Signal Alerts</option>
-                <option value="Coaching">Coaching</option>
-                <option value="Public/Motivational Events">Public/Motivational Events</option>
-                <option value="General">General</option>
-            </select>
-
-            <label for="rating">Rating</label>
-            <select id="rating" name="rating" required>
+            <label for="Rating">Rating</label>
+            <select name="Rating" required>
                 <option value="5">5</option>
                 <option value="4">4</option>
                 <option value="3">3</option>
@@ -317,41 +330,75 @@
                 <option value="1">1</option>
             </select>
 
-            <label for="testimonial">Testimonial</label>
-            <textarea id="testimonial" name="testimonial" placeholder="Share your experience with Holguin Trades..." required></textarea>
+            <label for="Service">Service</label>
+                <select name="Service" id="Service" required>
+                <option value="">-- Select a Service --</option>
+                <option value="Signal Alerts">Signal Alerts</option>
+                <option value="Coaching">Coaching</option>
+                <option value="Public/Motivational Events">Public/Motivational Events</option>
+                <option value="General">General</option>
+                </select>
+                
+            <label for="message">Testimonial</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Message"
+              required=""
+            ></textarea>
+            <button type="submit">Send</button>
+          </form>
 
-            <label for="photo">Photo (optional)</label>
-            <div class="file-upload">
-                <input type="file" id="photo" name="photo" accept=".jpg,.jpeg,.png,.pdf" />
+        <div class="thank-you" id="thankYouModal">
+            <div style="background: white; padding: 2rem; border-radius: 8px; text-align: center; max-width: 500px; width: 90%; position: relative;">
+                <button onclick="document.getElementById('thankYouModal').style.display='none'" style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 1.5rem; cursor: pointer;">&times;</button>
+                <h4>THANK YOU</h4>
+                <p class="highlight">We truly hope your testimonial was so out of this world that we must feature it in our main website page!</p>
             </div>
-
-            <label for="mediaUpload">Video/Audio (optional)</label>
-            <div class="file-upload">
-                <input type="file" id="mediaUpload" name="mediaUpload" accept="audio/*,video/*" />
-            </div>
-
-            <div class="consent-section">
-                <p>I confirm that I am the sole author of this testimonial and that it reflects my honest opinions and experiences. Additionally, I understand the testimonial I provided, including all text, images, audio and video (hereinafter called "The testimonial"), was made on behalf of Holguin Trades (hereinafter called "The Business") and will be used in marketing and promoting The Business.</p>
-                <p>I authorize The Business and its employees, contractors, partners and other representatives to use the testimonial in marketing and promotional efforts, including, but not limited to, websites, advertisements, social media posts, brochures, [other promotional materials].</p>
-                <p>I waive any claim to inspect, edit or approve of any materials where the testimonial is used. I also waive any claim to copyright the testimonial or materials where the testimonial appears and waive any claim to financial compensation or gain from using the testimonial.</p>
-                <p>I release the business and its representatives from any claims, demands, or liability arising out of or related to the use of my testimonial.</p>
-                <div class="checkbox-group">
-                    <input type="checkbox" id="consent" name="consent" required checked />
-                    <label for="consent">I agree to the above terms</label>
-                </div>
-            </div>
-
-            <input type="hidden" name="_redirect" value="https://holguintrades.com/thank-you"/>
-            <input type="hidden" name="_subject" value="New Testimonial Submission"/>
-            <input type="hidden" name="_email" value="samuels.sameh@gmail.com"/>
-
-            <button type="submit">Submit Testimonial</button>
-        </form>
-
-        <div class="thank-you">
-            <h4>THANK YOU</h4>
-            <p class="highlight">We truly hope your testimonial was so out of this world that we must feature it in our main website page!</p>
         </div>
     </div>
+    <script>
+    const industries = [
+      "", "Technology", "Healthcare", "Finance", "Education", "Manufacturing",
+      "Retail", "Hospitality", "Transportation", "Construction", "Real Estate",
+      "Energy", "Telecommunications", "Agriculture", "Legal", "Media",
+      "Government", "Nonprofit", "Aerospace", "Automotive", "Entertainment"
+    ];
+    const countries = [
+      "United States", "Canada", "Mexico", "Brazil", "United Kingdom", "Germany",
+      "France", "Italy", "Spain", "Netherlands", "Australia", "New Zealand",
+      "Japan", "South Korea", "China", "India", "South Africa", "Egypt",
+      "Turkey", "Russia"
+    ];
+
+    const industrySelect = document.getElementById('industry');
+    industries.forEach(ind => {
+      const opt = document.createElement("option");
+      opt.value = ind.toLowerCase().replace(/\s+/g, '-');
+      opt.textContent = ind;
+      industrySelect.appendChild(opt);
+    });
+
+    const countrySelect = document.getElementById('country');
+    countries.forEach(cty => {
+      const opt = document.createElement("option");
+      opt.value = cty.toLowerCase().replace(/\s+/g, '-');
+      opt.textContent = cty;
+      countrySelect.appendChild(opt);
+    });
+    countrySelect.value = "united-states";
+  </script>
+
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <script>
+        document.querySelector('form').onsubmit = function() {
+            document.getElementById('thankYouModal').style.display = 'flex';
+            setTimeout(function() {
+                document.getElementById('thankYouModal').style.display = 'none';
+                window.location.href = 'https://holguintrades.com/thank-you';
+            }, 2000);
+            return false;
+        }
+    </script>
 </body>
 </html>
