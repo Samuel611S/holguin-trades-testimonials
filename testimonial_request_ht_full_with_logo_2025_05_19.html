@@ -298,83 +298,20 @@
         </div>
 
         <h4>Questions</h4>
-        <form action="https://submit-form.com/AwLKMKncF" method="POST" enctype="multipart/form-data">
+        <form action="https://submit-form.com/AwLKMKncF">
             <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Your name" required />
-
+            <input type="text" id="name" name="name" placeholder="Name" required="" />
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="your.email@example.com" required />
-
-            <label for="industry">Industry</label>
-            <select id="industry" name="industry" required>
-                <option value="">Select an industry</option>
-                <option value="Accounting">Accounting</option>
-                <option value="Finance">Finance</option>
-                <option value="IT">IT</option>
-                <option value="Other">Other</option>
-            </select>
-
-            <label for="jobTitle">Job Title</label>
-            <input type="text" id="jobTitle" name="jobTitle" placeholder="Your job title" />
-
-            <label for="country">Country</label>
-            <select id="country" name="country" required>
-                <option value="United States">United States</option>
-                <option value="Canada">Canada</option>
-                <option value="Other">Other</option>
-            </select>
-
-            <label for="city">City</label>
-            <input type="text" id="city" name="city" placeholder="Your city" />
-
-            <label for="service">Service</label>
-            <select id="service" name="service" required>
-                <option value="">Select a service</option>
-                <option value="Signal Alerts">Signal Alerts</option>
-                <option value="Coaching">Coaching</option>
-                <option value="Public/Motivational Events">Public/Motivational Events</option>
-                <option value="General">General</option>
-            </select>
-
-            <label for="rating">Rating</label>
-            <select id="rating" name="rating" required>
-                <option value="5">5</option>
-                <option value="4">4</option>
-                <option value="3">3</option>
-                <option value="2">2</option>
-                <option value="1">1</option>
-            </select>
-
-            <label for="testimonial">Testimonial</label>
-            <textarea id="testimonial" name="testimonial" placeholder="Share your experience with Holguin Trades..." required></textarea>
-
-            <label for="photo">Photo (optional)</label>
-            <div class="file-upload">
-                <input type="file" id="photo" name="photo" accept=".jpg,.jpeg,.png,.pdf" />
-            </div>
-
-            <label for="mediaUpload">Video/Audio (optional)</label>
-            <div class="file-upload">
-                <input type="file" id="mediaUpload" name="mediaUpload" accept="audio/*,video/*" />
-            </div>
-
-            <div class="consent-section">
-                <p>I confirm that I am the sole author of this testimonial and that it reflects my honest opinions and experiences. Additionally, I understand the testimonial I provided, including all text, images, audio and video (hereinafter called "The testimonial"), was made on behalf of Holguin Trades (hereinafter called "The Business") and will be used in marketing and promoting The Business.</p>
-                <p>I authorize The Business and its employees, contractors, partners and other representatives to use the testimonial in marketing and promotional efforts, including, but not limited to, websites, advertisements, social media posts, brochures, [other promotional materials].</p>
-                <p>I waive any claim to inspect, edit or approve of any materials where the testimonial is used. I also waive any claim to copyright the testimonial or materials where the testimonial appears and waive any claim to financial compensation or gain from using the testimonial.</p>
-                <p>I release the business and its representatives from any claims, demands, or liability arising out of or related to the use of my testimonial.</p>
-                <div class="checkbox-group">
-                    <input type="checkbox" id="consent" name="consent" required checked />
-                    <label for="consent">I agree to the above terms</label>
-                </div>
-            </div>
-
-            <input type="hidden" name="_redirect" value="https://holguintrades.com/thank-you"/>
-            <input type="hidden" name="_subject" value="New Testimonial Submission"/>
-            <input type="hidden" name="_email" value="samuels.sameh@gmail.com"/>
-
-            <button type="submit">Submit Testimonial</button>
-        </form>
+            <input type="email" id="email" name="email" placeholder="Email" required="" />
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Message"
+              required=""
+            ></textarea>
+            <button type="submit">Send</button>
+          </form>
 
         <div class="thank-you">
             <h4>THANK YOU</h4>
