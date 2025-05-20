@@ -414,17 +414,32 @@
             }
 
             try {
+                console.log('Starting form submission...');
+                
                 // Get the Turnstile token
                 const turnstileResponse = await turnstile.getResponse();
                 formData.append('cf-turnstile-response', turnstileResponse);
+                console.log('Turnstile token received');
+
+                // Log form data (excluding files)
+                console.log('Form data being submitted:');
+                for (let [key, value] of formData.entries()) {
+                    if (key !== 'photo' && key !== 'media') {
+                        console.log(`${key}: ${value}`);
+                    } else {
+                        console.log(`${key}: File object present`);
+                    }
+                }
 
                 // Submit the form directly with FormData
+                console.log('Sending to Formspark...');
                 const response = await fetch('https://submit-form.com/AwLKMKncF', {
                     method: 'POST',
                     body: formData,
-                    mode: 'no-cors', // This will prevent CORS errors
-                    redirect: 'follow' // Allow redirects
+                    mode: 'no-cors',
+                    redirect: 'follow'
                 });
+                console.log('Form submission completed');
 
                 // Since we're using no-cors, we can't check response.ok
                 // Instead, we'll assume success if no error was thrown
