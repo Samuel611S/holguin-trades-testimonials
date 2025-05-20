@@ -516,7 +516,7 @@
             <div class="form-group">
                 <label for="name">Name</label>
                 <span class="caption">Enter your name</span>
-                <input type="text" id="name" name="name" maxlength="60" placeholder="Your name">
+                <input type="text" id="name" name="name" maxlength="60" placeholder="Your name" required>
             </div>
             
             <div class="form-group">
@@ -528,7 +528,7 @@
             <div class="form-group">
                 <label for="industry">Industry</label>
                 <span class="caption">Which industry do you work in?</span>
-                <select id="industry" name="industry">
+                <select id="industry" name="industry" required>
                     <option value="">Select an industry</option>
                     <!-- Industry options will be populated via JavaScript -->
                 </select>
@@ -537,13 +537,13 @@
             <div class="form-group">
                 <label for="jobTitle">Job Title</label>
                 <span class="caption">Enter your job title</span>
-                <input type="text" id="jobTitle" name="jobTitle" maxlength="80" placeholder="Your job title">
+                <input type="text" id="jobTitle" name="jobTitle" maxlength="80" placeholder="Your job title" required>
             </div>
             
             <div class="form-group">
                 <label for="country">Country</label>
                 <span class="caption">Select your country with pride</span>
-                <select id="country" name="country">
+                <select id="country" name="country" required>
                     <option value="United States">United States</option>
                     <!-- Country options will be populated via JavaScript -->
                 </select>
@@ -552,13 +552,13 @@
             <div class="form-group">
                 <label for="city">City</label>
                 <span class="caption">Enter your city</span>
-                <input type="text" id="city" name="city" maxlength="50" placeholder="Your city">
+                <input type="text" id="city" name="city" maxlength="50" placeholder="Your city" required>
             </div>
             
             <div class="form-group">
                 <label for="service">Service</label>
                 <span class="caption">Select a service for your testimonial</span>
-                <select id="service" name="service">
+                <select id="service" name="service" required>
                     <option value="">Select a service</option>
                     <option value="Signal Alerts">Signal Alerts</option>
                     <option value="Coaching">Coaching</option>
@@ -621,8 +621,8 @@
             <input type="hidden" name="_subject" value="New Testimonial Submission"/>
             <input type="hidden" name="_email" value="samuels.sameh@gmail.com"/>
             
-            <!-- Cloudflare Turnstile CAPTCHA -->
-            <div class="cf-turnstile" data-sitekey="0x4AAAAAABd9WX40ycLOMMtB"></div>
+            <!-- Temporarily comment out Cloudflare Turnstile for testing -->
+            <!-- <div class="cf-turnstile" data-sitekey="0x4AAAAAABd9WX40ycLOMMtB"></div> -->
             
             <button type="submit" id="submitButton">Submit</button>
             <p class="form-caption">Press to submit your testimonial</p>
@@ -772,16 +772,16 @@
             submitButton.innerHTML = '<span class="spinner"></span> Submitting...';
             
             try {
-                // Get Turnstile token
-                const turnstileResponse = document.querySelector('[name="cf-turnstile-response"]').value;
-                if (!turnstileResponse) {
-                    alert('Please complete the CAPTCHA verification');
-                    return;
-                }
+                // Temporarily disable Turnstile check for testing
+                // const turnstileResponse = document.querySelector('[name="cf-turnstile-response"]').value;
+                // if (!turnstileResponse) {
+                //     alert('Please complete the CAPTCHA verification');
+                //     return;
+                // }
                 
                 // Create FormData object
                 const formData = new FormData(this);
-                formData.append('cf-turnstile-response', turnstileResponse);
+                // formData.append('cf-turnstile-response', turnstileResponse);
                 
                 // Log form data for debugging
                 console.log('Submitting form data:', Object.fromEntries(formData));

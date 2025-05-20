@@ -625,8 +625,8 @@
             <input type="hidden" name="_subject" value="New Testimonial Submission"/>
             <input type="hidden" name="_email" value="samuels.sameh@gmail.com"/>
             
-            <!-- Cloudflare Turnstile CAPTCHA -->
-            <div class="cf-turnstile" data-sitekey="0x4AAAAAABd9WX40ycLOMMtB"></div>
+            <!-- Temporarily comment out Cloudflare Turnstile for testing -->
+            <!-- <div class="cf-turnstile" data-sitekey="0x4AAAAAABd9WX40ycLOMMtB"></div> -->
             
             <button type="submit" id="submitButton">Submit</button>
             <p class="form-caption">Press to submit your testimonial</p>
@@ -776,16 +776,16 @@
             submitButton.innerHTML = '<span class="spinner"></span> Submitting...';
             
             try {
-                // Get Turnstile token
-                const turnstileResponse = document.querySelector('[name="cf-turnstile-response"]').value;
-                if (!turnstileResponse) {
-                    alert('Please complete the CAPTCHA verification');
-                    return;
-                }
+                // Temporarily disable Turnstile check for testing
+                // const turnstileResponse = document.querySelector('[name="cf-turnstile-response"]').value;
+                // if (!turnstileResponse) {
+                //     alert('Please complete the CAPTCHA verification');
+                //     return;
+                // }
                 
                 // Create FormData object
                 const formData = new FormData(this);
-                formData.append('cf-turnstile-response', turnstileResponse);
+                // formData.append('cf-turnstile-response', turnstileResponse);
                 
                 // Log form data for debugging
                 console.log('Submitting form data:', Object.fromEntries(formData));
