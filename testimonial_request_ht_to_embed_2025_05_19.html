@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holguin Trades Testimonial Request</title>
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2c5282;
+            --accent-color: #4299e1;
+            --text-color: #2d3748;
+            --light-bg: #f7fafc;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1rem;
+            background: white;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            color: var(--secondary-color);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.8rem;
+        }
+
+        h4 {
+            color: var(--secondary-color);
+            margin: 1rem 0;
+            font-size: 1.2rem;
+        }
+
+        .highlight {
+            background-color: #ebf8ff;
+            padding: 1rem;
+            border-left: 4px solid var(--accent-color);
+            margin: 1rem 0;
+            font-weight: 500;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .file-upload {
+            border: 2px dashed var(--border-color);
+            padding: 1rem;
+            text-align: center;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .file-upload:hover {
+            border-color: var(--accent-color);
+        }
+
+        .consent-section {
+            background-color: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin: 2rem 0;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            margin-top: 0.25rem;
+        }
+
+        button[type="submit"] {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .honeypot {
+            display: none;
+        }
+
+        .thank-you-section {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: #f0fff4;
+            border-radius: 4px;
+        }
+
+        .thank-you-section h4 {
+            color: #2f855a;
+        }
+
+        /* Responsive adjustments for iframe */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .form-group {
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Holguin Trades Testimonial Request Form</h1>
+
+        <div class="highlight">
+            Submit a testimonial on any of Holguin Trades services to have a chance to get featured in our main website page!
+            Testimonials with photos, audio and/or video have a higher chance, don't miss the opportunity!
+        </div>
+
+        <p>We'd love to hear about your experience with Holguin Trades and share it with others. Remember, your feedback is valuable and will help us improve and continue to serve our customers better. You can choose to provide a written, video, or audio testimonial. As you know, this is completely voluntary, and we appreciate your time and consideration.</p>
+
+        <p>Here are some examples of testimonials we've received <a href="https://holguintrades.com/testimonials.html" target="_blank">testimonials page</a></p>
+
+        <div class="highlight">
+            If you are like us, and believe the trading signals/coaching/public speeches are so out of this world and don't know where to start, get inspiration from the below questions:
+        </div>
+
+        <ul>
+            <li>What were your initial expectations, and did Holguin Trades exceed them?</li>
+            <li>What problem were you facing before you used Holguin Trades?</li>
+            <li>How did Holguin Trades specifically help you?</li>
+            <li>What has changed or improved for you since using Holguin Trades?</li>
+            <li>How is Holguin Trades different from other similar services you have used?</li>
+            <li>Would you recommend Holguin Trades to others? Why?</li>
+        </ul>
+
+        <div class="highlight">
+            Remember, adding the "why" to a testimonial makes it more likely to be included in the front page of our site, look at the below examples.
+        </div>
+
+        <form id="testimonialForm" action="https://holguintrades.com/test/process-testimonial" method="POST" enctype="multipart/form-data">
+            <!-- Honeypot field -->
+            <div class="honeypot">
+                <input type="text" name="website" id="website">
+                <input type="hidden" name="test_email" value="samuels.sameh@gmail.com">
+            </div>
+
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" maxlength="60" placeholder="Enter your name">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" maxlength="60" placeholder="Enter your email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="industry">Industry</label>
+                <select id="industry" name="industry">
+                    <option value="">Select your industry</option>
+                    <!-- Will be populated by JavaScript -->
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="jobTitle">Job Title</label>
+                <input type="text" id="jobTitle" name="jobTitle" maxlength="80" placeholder="Enter your job title">
+            </div>
+
+            <div class="form-group">
+                <label for="country">Country</label>
+                <select id="country" name="country">
+                    <option value="United States">United States</option>
+                    <!-- Will be populated by JavaScript -->
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" id="city" name="city" maxlength="50" placeholder="Enter your city">
+            </div>
+
+            <div class="form-group">
+                <label for="rating">Rating *</label>
+                <select id="rating" name="rating" required>
+                    <option value="5">5 - Excellent</option>
+                    <option value="4">4 - Very Good</option>
+                    <option value="3">3 - Good</option>
+                    <option value="2">2 - Fair</option>
+                    <option value="1">1 - Poor</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="service">Service</label>
+                <select id="service" name="service">
+                    <option value="">Select a service</option>
+                    <option value="Signal Alerts">Signal Alerts</option>
+                    <option value="Coaching">Coaching</option>
+                    <option value="Public/Motivational Events">Public/Motivational Events</option>
+                    <option value="General">General</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="photo">Add a face to your testimonial!</label>
+                <div class="file-upload">
+                    <input type="file" id="photo" name="photo" accept="image/*">
+                    <p>Testimonials with photos are more impactful; don't miss the opportunity to shine!</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="media">Video/Audio testimonial Upload</label>
+                <div class="file-upload">
+                    <input type="file" id="media" name="media" accept="video/*,audio/*">
+                    <p>Testimonials with Video/audio are more impactful; don't miss the opportunity to shine!</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="testimonial">Testimonial *</label>
+                <textarea id="testimonial" name="testimonial" maxlength="1300" required placeholder="Type your testimonial here"></textarea>
+            </div>
+
+            <div class="consent-section">
+                <p>I confirm that I am the sole author of this testimonial and that it reflects my honest opinions and experiences. Additionally, I understand the testimonial I provided, including all text, images, audio and video (hereinafter called "The testimonial"), was made on behalf of Holguin Trades (hereinafter called "The Business") and will be used in marketing and promoting The Business. I authorize The Business and its employees, contractors, partners and other representatives to use the testimonial in marketing and promotional efforts, including, but not limited to, websites, advertisements, social media posts, brochures, [other promotional materials]. I waive any claim to inspect, edit or approve of any materials where the testimonial is used. I also waive any claim to copyright the testimonial or materials where the testimonial appears and waive any claim to financial compensation or gain from using the testimonial. I release the business and its representatives from any claims, demands, or liability arising out of or related to the use of my testimonial.</p>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="consent" name="consent" required checked>
+                    <label for="consent">By checking this box, I verify that I have read, understand and agree to the above statement</label>
+                </div>
+            </div>
+
+            <div class="thank-you-section">
+                <h4>THANK YOU and We truly hope your testimonial was so out of this world that we must feature it in our main website page!</h4>
+            </div>
+
+            <!-- Cloudflare Turnstile -->
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAABd9WX40ycLOMMtB"></div>
+
+            <button type="submit">Submit Testimonial</button>
+        </form>
+    </div>
+
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <script>
+        // Industry list
+        const industries = [
+            "Finance",
+            "Technology",
+            "Healthcare",
+            "Education",
+            "Manufacturing",
+            "Retail",
+            "Real Estate",
+            "Energy",
+            "Transportation",
+            "Other"
+        ];
+
+        // Populate industry dropdown
+        const industrySelect = document.getElementById('industry');
+        industries.forEach(industry => {
+            const option = document.createElement('option');
+            option.value = industry;
+            option.textContent = industry;
+            industrySelect.appendChild(option);
+        });
+
+        // Form submission handling
+        document.getElementById('testimonialForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Basic form validation
+            const formData = new FormData(e.target);
+            
+            // Check honeypot
+            if (formData.get('website')) {
+                return; // Bot detected
+            }
+
+            try {
+                const response = await fetch(e.target.action, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    window.location.href = 'https://holguintrades.com/thank-you';
+                } else {
+                    alert('There was an error submitting your testimonial. Please try again.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('There was an error submitting your testimonial. Please try again.');
+            }
+        });
+
+        // File type validation
+        document.getElementById('photo').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            const validTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+            if (file && !validTypes.includes(file.type)) {
+                alert('Please upload only JPG, JPEG, or PNG files.');
+                this.value = '';
+            }
+        });
+
+        document.getElementById('media').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            const validTypes = ['video/mp4', 'video/quicktime', 'audio/mpeg', 'audio/wav'];
+            if (file && !validTypes.includes(file.type)) {
+                alert('Please upload only video (MP4, MOV) or audio (MP3, WAV) files.');
+                this.value = '';
+            }
+        });
+    </script>
+</body>
+</html> 
