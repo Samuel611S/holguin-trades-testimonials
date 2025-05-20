@@ -308,6 +308,8 @@
                 </select>
             </div>
 
+            <!-- Commenting out file inputs for testing -->
+            <!--
             <div class="form-group">
                 <label for="photo">Add a face to your testimonial!</label>
                 <div class="file-upload">
@@ -323,6 +325,7 @@
                     <p>Testimonials with Video/audio are more impactful; don't miss the opportunity to shine!</p>
                 </div>
             </div>
+            -->
 
             <div class="form-group">
                 <label for="testimonial">Testimonial *</label>
@@ -347,144 +350,146 @@
 
             <button type="submit">Submit Testimonial</button>
         </form>
-    </div>
 
-    <!-- Success Modal -->
-    <div id="successModal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close">&times;</span>
-            <h2 style="color: var(--primary-color); margin-bottom: 1rem;">Thank You!</h2>
-            <p>Your testimonial has been successfully submitted. We truly appreciate your feedback!</p>
-            <p style="margin-top: 1rem;">We'll review your submission and may feature it on our main website page.</p>
+        <!-- Success Modal -->
+        <div id="successModal" class="modal">
+            <div class="modal-content">
+                <span class="modal-close">&times;</span>
+                <h2 style="color: var(--primary-color); margin-bottom: 1rem;">Thank You!</h2>
+                <p>Your testimonial has been successfully submitted. We truly appreciate your feedback!</p>
+                <p style="margin-top: 1rem;">We'll review your submission and may feature it on our main website page.</p>
+            </div>
         </div>
-    </div>
 
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-    <script>
-        // Industry list
-        const industries = [
-            "Finance",
-            "Technology",
-            "Healthcare",
-            "Education",
-            "Manufacturing",
-            "Retail",
-            "Real Estate",
-            "Energy",
-            "Transportation",
-            "Other"
-        ];
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+        <script>
+            // Industry list
+            const industries = [
+                "Finance",
+                "Technology",
+                "Healthcare",
+                "Education",
+                "Manufacturing",
+                "Retail",
+                "Real Estate",
+                "Energy",
+                "Transportation",
+                "Other"
+            ];
 
-        // Populate industry dropdown
-        const industrySelect = document.getElementById('industry');
-        industries.forEach(industry => {
-            const option = document.createElement('option');
-            option.value = industry;
-            option.textContent = industry;
-            industrySelect.appendChild(option);
-        });
+            // Populate industry dropdown
+            const industrySelect = document.getElementById('industry');
+            industries.forEach(industry => {
+                const option = document.createElement('option');
+                option.value = industry;
+                option.textContent = industry;
+                industrySelect.appendChild(option);
+            });
 
-        // Modal handling
-        const modal = document.getElementById('successModal');
-        const closeBtn = document.querySelector('.modal-close');
+            // Modal handling
+            const modal = document.getElementById('successModal');
+            const closeBtn = document.querySelector('.modal-close');
 
-        closeBtn.onclick = function() {
-            modal.style.display = "none";
-            window.location.href = 'https://holguintrades.com/thank-you';
-        }
-
-        window.onclick = function(event) {
-            if (event.target == modal) {
+            closeBtn.onclick = function() {
                 modal.style.display = "none";
                 window.location.href = 'https://holguintrades.com/thank-you';
             }
-        }
 
-        // Form submission handling
-        document.getElementById('testimonialForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            // Basic form validation
-            const formData = new FormData(e.target);
-            
-            // Check honeypot
-            if (formData.get('website')) {
-                return; // Bot detected
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                    window.location.href = 'https://holguintrades.com/thank-you';
+                }
             }
 
-            try {
-                console.log('Starting form submission...');
+            // Commenting out form submission handling JavaScript for testing native submission
+            /*
+            document.getElementById('testimonialForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
                 
-                // Get the Turnstile token
-                const turnstileResponse = await turnstile.getResponse();
-                formData.append('cf-turnstile-response', turnstileResponse);
-                console.log('Turnstile token received');
-
-                // Log form data (excluding files)
-                console.log('Form data being submitted:');
-                for (let [key, value] of formData.entries()) {
-                    if (key !== 'photo' && key !== 'media') {
-                        console.log(`${key}: ${value}`);
-                    } else {
-                        console.log(`${key}: File object present`);
-                    }
+                // Basic form validation
+                const formData = new FormData(e.target);
+                
+                // Check honeypot
+                if (formData.get('website')) {
+                    return; // Bot detected
                 }
 
-                // Submit the form using the native form submission
-                console.log('Sending to Formspark...');
-                const form = e.target;
-                const originalAction = form.action;
-                const originalMethod = form.method;
+                try {
+                    console.log('Starting form submission...');
+                    
+                    // Get the Turnstile token
+                    const turnstileResponse = await turnstile.getResponse();
+                    formData.append('cf-turnstile-response', turnstileResponse);
+                    console.log('Turnstile token received');
 
-                // Create a hidden iframe for the submission
-                const iframe = document.createElement('iframe');
-                iframe.style.display = 'none';
-                document.body.appendChild(iframe);
+                    // Log form data (excluding files)
+                    console.log('Form data being submitted:');
+                    for (let [key, value] of formData.entries()) {
+                        if (key !== 'photo' && key !== 'media') {
+                            console.log(`${key}: ${value}`);
+                        }
+                    }
 
-                // Set up the form to submit to the iframe
-                form.target = iframe.name;
-                form.action = 'https://submit-form.com/AwLKMKncF';
+                    // Submit the form using the native form submission
+                    console.log('Sending to Formspark...');
+                    const form = e.target;
+                    const originalAction = form.action;
+                    const originalMethod = form.method;
 
-                // Submit the form
-                form.submit();
+                    // Create a hidden iframe for the submission
+                    const iframe = document.createElement('iframe');
+                    iframe.style.display = 'none';
+                    document.body.appendChild(iframe);
 
-                // Show success modal
-                modal.style.display = "block";
+                    // Set up the form to submit to the iframe
+                    form.target = iframe.name;
+                    form.action = 'https://submit-form.com/AwLKMKncF';
 
-                // Clean up
-                setTimeout(() => {
-                    document.body.removeChild(iframe);
-                    form.target = '';
-                    form.action = originalAction;
-                    form.method = originalMethod;
-                }, 1000);
+                    // Submit the form
+                    form.submit();
 
-                console.log('Form submission completed');
-                
-            } catch (error) {
-                console.error('Error details:', error);
-                alert('There was an error submitting your testimonial. Please try again.');
-            }
-        });
+                    // Show success modal
+                    modal.style.display = "block";
 
-        // File type validation
-        document.getElementById('photo').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            const validTypes = ['image/jpeg', 'image/png', 'image/jpg'];
-            if (file && !validTypes.includes(file.type)) {
-                alert('Please upload only JPG, JPEG, or PNG files.');
-                this.value = '';
-            }
-        });
+                    // Clean up
+                    setTimeout(() => {
+                        document.body.removeChild(iframe);
+                        form.target = '';
+                        form.action = originalAction;
+                        form.method = originalMethod;
+                    }, 1000);
 
-        document.getElementById('media').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            const validTypes = ['video/mp4', 'video/quicktime', 'audio/mpeg', 'audio/wav'];
-            if (file && !validTypes.includes(file.type)) {
-                alert('Please upload only video (MP4, MOV) or audio (MP3, WAV) files.');
-                this.value = '';
-            }
-        });
-    </script>
+                    console.log('Form submission completed');
+                    
+                } catch (error) {
+                    console.error('Error details:', error);
+                    alert('There was an error submitting your testimonial. Please try again.');
+                }
+            });
+            */
+
+            // File type validation (commented out as file inputs are commented out)
+            /*
+            document.getElementById('photo').addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                const validTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+                if (file && !validTypes.includes(file.type)) {
+                    alert('Please upload only JPG, JPEG, or PNG files.');
+                    this.value = '';
+                }
+            });
+
+            document.getElementById('media').addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                const validTypes = ['video/mp4', 'video/quicktime', 'audio/mpeg', 'audio/wav'];
+                if (file && !validTypes.includes(file.type)) {
+                    alert('Please upload only video (MP4, MOV) or audio (MP3, WAV) files.');
+                    this.value = '';
+                }
+            });
+            */
+        </script>
+    </div>
 </body>
 </html> 
