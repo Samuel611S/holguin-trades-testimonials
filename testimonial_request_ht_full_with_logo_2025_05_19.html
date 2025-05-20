@@ -296,8 +296,6 @@
                 <li>The session that John Doe put together was fantastic. He was calm and interacted with all of us.</li>
             </ul>
         </div>
-
-        <h4>Questions</h4>
         <form action="https://submit-form.com/AwLKMKncF">
             <input type="hidden" name="_redirect" value="https://holguintrades.com/thank-you" />
             <input type="text" name="confirm_code_field" class="hidden" autocomplete="off" /> <!-- Honeypot -->
@@ -331,6 +329,7 @@
                 <option value="2">2</option>
                 <option value="1">1</option>
             </select>
+
             <label for="Service">Service</label>
                 <select name="Service" id="Service" required>
                 <option value="">-- Select a Service --</option>
@@ -339,6 +338,7 @@
                 <option value="Public/Motivational Events">Public/Motivational Events</option>
                 <option value="General">General</option>
                 </select>
+                
             <label for="message">Testimonial</label>
             <textarea
               id="message"
@@ -354,5 +354,38 @@
             <p class="highlight">We truly hope your testimonial was so out of this world that we must feature it in our main website page!</p>
         </div>
     </div>
+    <script>
+    const industries = [
+      "", "Technology", "Healthcare", "Finance", "Education", "Manufacturing",
+      "Retail", "Hospitality", "Transportation", "Construction", "Real Estate",
+      "Energy", "Telecommunications", "Agriculture", "Legal", "Media",
+      "Government", "Nonprofit", "Aerospace", "Automotive", "Entertainment"
+    ];
+    const countries = [
+      "United States", "Canada", "Mexico", "Brazil", "United Kingdom", "Germany",
+      "France", "Italy", "Spain", "Netherlands", "Australia", "New Zealand",
+      "Japan", "South Korea", "China", "India", "South Africa", "Egypt",
+      "Turkey", "Russia"
+    ];
+
+    const industrySelect = document.getElementById('industry');
+    industries.forEach(ind => {
+      const opt = document.createElement("option");
+      opt.value = ind.toLowerCase().replace(/\s+/g, '-');
+      opt.textContent = ind;
+      industrySelect.appendChild(opt);
+    });
+
+    const countrySelect = document.getElementById('country');
+    countries.forEach(cty => {
+      const opt = document.createElement("option");
+      opt.value = cty.toLowerCase().replace(/\s+/g, '-');
+      opt.textContent = cty;
+      countrySelect.appendChild(opt);
+    });
+    countrySelect.value = "united-states";
+  </script>
+
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </body>
 </html>
