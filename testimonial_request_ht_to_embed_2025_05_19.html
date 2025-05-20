@@ -41,7 +41,21 @@
             animation: slideUp 0.5s ease-out;
         }
 
-        /* Removed .logo styles */
+        .logo {
+            text-align: center;
+            margin-bottom: 2rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .logo img {
+            max-width: 210px;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
+        }
 
         h1 {
             color: var(--primary-color);
@@ -79,11 +93,10 @@
             margin-bottom: 0;
         }
 
-        /* Emphasis added for highlight class */
         .highlight {
-            font-weight: 700; /* Bolder */
+            font-weight: 700;
             color: var(--primary-color);
-            text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.1);
         }
 
         .examples {
@@ -192,40 +205,35 @@
             transform: translateY(0);
         }
 
-        .file-upload {
-            border: 2px dashed var(--border-color);
-            padding: 1rem;
-            text-align: center;
-            border-radius: 44px;
-            transition: border-color 0.3s ease;
+        /* Basic styling for file inputs */
+        input[type="file"] {
+            border: 1px solid var(--border-color);
+            padding: 0.75rem;
+            border-radius: 4px;
+            background-color: #fff;
         }
 
-        .file-upload:hover {
-            border-color: var(--accent-color);
-        }
-
-        /* Emphasis added for thank-you section */
         .thank-you {
             text-align: center;
             margin-top: 2rem;
             padding: 1.5rem;
-            background: #e6fffa; /* Slightly different background for "THANK YOU" */
+            background: #e6fffa;
             border-radius: 8px;
             border-left: 4px solid var(--success-color);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
 
         .thank-you h4 {
-            font-size: 1.4rem; /* Larger font for heading */
-            color: var(--success-color); /* Green color for success */
+            font-size: 1.4rem;
+            color: var(--success-color);
             margin-bottom: 0.5rem;
         }
 
         .thank-you p {
             font-size: 1.1rem;
-            font-weight: 600; /* Bolder text */
+            font-weight: 600;
             color: var(--primary-color);
-            text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+            text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.05);
         }
 
         @keyframes fadeIn {
@@ -248,7 +256,9 @@
             .container {
                 padding: 1rem;
             }
-            /* Removed .logo img media query as .logo is removed */
+            .logo img {
+                max-width: 180px;
+            }
             h1 {
                 font-size: 2rem;
             }
@@ -287,9 +297,9 @@
                 <li>The session that John Doe put together was fantastic. He was calm and interacted with all of us.</li>
             </ul>
         </div>
-        <form action="https://submit-form.com/AwLKMKncF">
+        <form action="https://usebasin.com/f/95a74b99c1a8" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="_redirect" value="https://holguintrades.com/thank-you" />
-            <input type="text" name="confirm_code_field" style="display: none;" autocomplete="off" />
+            <input type="text" name="_gotcha" style="display: none;" autocomplete="off" />
 
             <label for="name">Name</label>
             <input type="text" id="name" name="name" maxlength="60" placeholder="Enter your name" required/>
@@ -329,13 +339,19 @@
                 <option value="General">General</option>
                 </select>
                 
-            <label for="testimonials">Testimonial</label>
+            <label for="testimonial">Testimonial</label>
             <textarea
               id="testimonial"
               name="testimonial"
               placeholder="Testimonial"
               required=""
             ></textarea>
+
+            <h4>Upload Photo (Optional)</h4>
+            <input type="file" id="testimonialPhoto" name="testimonialPhoto" accept="image/*">
+
+            <h4>Upload Video (Optional)</h4>
+            <input type="file" id="testimonialVideo" name="testimonialVideo" accept="video/*">
 
             <div class="consent-section">
                 <p>By submitting this testimonial, you acknowledge and agree that Holguin Trades may use your testimonial, including any submitted photos, audio, or video, for marketing, promotional, and advertising purposes across various platforms, including but not limited to our website, social media, and other promotional materials. You grant Holguin Trades a non-exclusive, royalty-free, worldwide license to use, display, reproduce, and distribute your testimonial in connection with our services. Your personal information, such as your full name, will only be used with your explicit consent or as otherwise stated in our privacy policy.</p>
