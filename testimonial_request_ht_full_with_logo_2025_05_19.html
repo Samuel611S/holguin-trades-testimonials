@@ -5,17 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Holguin Trades Testimonial Request Form</title>
 
-    <!-- ────────────────────────────
-         CSS  (All styles in-document)
-    ─────────────────────────────── -->
     <style>
         :root {
             --primary-color: #1a365d;
             --secondary-color: #2c5282;
             --accent-color:   #4299e1;
-            --text-color:    #2d3748;
-            --light-bg:      #f7fafc;
-            --border-color:  #e2e8f0;
+            --text-color:     #2d3748;
+            --light-bg:       #f7fafc;
+            --border-color:   #e2e8f0;
+            --error-color:    #c53030; /* For error messages */
         }
 
         * {
@@ -40,7 +38,7 @@
             box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);
         }
 
-        /* ─── Logo & Headings ─── */
+        /* Logo & Headings */
         .logo{ text-align:center;margin-bottom:2rem; }
         .logo img{ max-width:210px;height:auto; }
 
@@ -48,7 +46,7 @@
         h2{ font-size:1.85rem;color:var(--secondary-color);margin:1.5rem 0 1rem; }
         h4{ font-size:1.25rem;color:var(--secondary-color);margin:1rem 0; }
 
-        /* ─── Highlight blocks ─── */
+        /* Highlight blocks */
         .highlight{
             background:#ebf8ff;
             padding:1rem 1.25rem;
@@ -57,7 +55,7 @@
             font-weight:500;
         }
 
-        /* ─── Form Elements ─── */
+        /* Form Elements */
         .form-group{ margin-bottom:1.55rem; }
 
         label{ display:block;margin-bottom:0.5rem;font-weight:500; }
@@ -83,8 +81,10 @@
             cursor:pointer;
         }
         .file-upload:hover{ border-color:var(--accent-color); }
+        .file-upload p { font-size: 0.9rem; color: #718096; margin-top: 0.5rem;}
 
-        /* ─── Consent area ─── */
+
+        /* Consent area */
         .consent-section{
             background:#f8fafc;
             padding:1.6rem;
@@ -100,7 +100,7 @@
         }
         .checkbox-group input[type="checkbox"]{ margin-top:0.28rem; }
 
-        /* ─── Buttons ─── */
+        /* Buttons */
         button[type="submit"]{
             display:block;
             width:100%;
@@ -111,14 +111,19 @@
             border-radius:4px;
             font-size:1.12rem;
             cursor:pointer;
-            transition:background-color .3s;
+            transition:background-color .3s, opacity .3s;
         }
         button[type="submit"]:hover{ background:var(--secondary-color); }
+        button[type="submit"]:disabled {
+            background: var(--secondary-color);
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
 
-        /* ─── Hidden honeypot ─── */
+        /* Hidden honeypot */
         .honeypot{ display:none; }
 
-        /* ─── THANK-YOU CTA block ─── */
+        /* THANK-YOU CTA block */
         .thank-you-section{
             text-align:center;
             margin-top:2rem;
@@ -128,18 +133,20 @@
         }
         .thank-you-section h4{ color:#2f855a;font-weight:600; }
 
-        /* ─── Modal styles ─── */
+        /* Modal styles */
         .modal{
             display:none;
             position:fixed;top:0;left:0;
             width:100%;height:100%;
             background:rgba(0,0,0,.55);
             z-index:1000;
+            align-items:center; /* For vertical centering */
+            justify-content:center; /* For horizontal centering */
         }
         .modal-content{
             position:relative;
             background:#fff;
-            margin:12% auto;
+            /* margin:12% auto; Removed for flexbox centering */
             padding:2rem 2.25rem;
             width:85%;max-width:520px;
             border-radius:8px;
@@ -155,20 +162,29 @@
             font-size:1.5rem;cursor:pointer;color:var(--text-color);
         }
         .modal-close:hover{ color:var(--primary-color); }
+
+        /* General Error Message Styling (Optional) */
+        .error-message {
+            color: var(--error-color);
+            background-color: #fed7d7;
+            border: 1px solid var(--error-color);
+            padding: 0.75rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            text-align: left;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
 
-        <!-- ───────────────── Logo & Title ───────────────── -->
         <div class="logo">
             <img src="primary_website_logo1_ht_2025May16.svg" alt="Holguin Trades Logo">
         </div>
 
         <h1>Holguin Trades Testimonial Request Form</h1>
 
-        <!-- ───────────────── Intro copy ───────────────── -->
         <div class="highlight">
             Submit a testimonial on any of Holguin Trades services to have a chance to get featured on our main website page!<br>
             Testimonials with photos, audio and/or video have a higher chance — don't miss the opportunity!
@@ -177,21 +193,19 @@
         <p>
             We'd love to hear about your experience with Holguin Trades and share it with others.
             Remember, your feedback is valuable and will help us improve and continue to serve our customers better.
-            You can choose to provide a written, video, or audio testimonial.  
+            You can choose to provide a written, video, or audio testimonial.   
             As you know, this is completely voluntary, and we appreciate your time and consideration.
         </p>
-
         <p>
-            Here are some examples of testimonials we've received
-            <a href="https://holguintrades.com/testimonials.html" target="_blank" rel="noopener">testimonials page</a>
+            Here are some examples of testimonials we've received on our
+            <a href="https://holguintrades.com/testimonials.html" target="_blank" rel="noopener">testimonials page</a>.
         </p>
 
         <div class="highlight">
             If you are like us, and believe the trading signals/coaching/public speeches are so out of this world and don't know where to start, get inspiration from the below questions:
         </div>
 
-        <!-- ───────────────── Prompt questions ───────────────── -->
-        <ul style="margin-left:1.2rem;">
+        <ul style="margin-left:1.2rem; margin-bottom:1.5rem;">
             <li>What were your initial expectations, and did Holguin Trades exceed them?</li>
             <li>What problem were you facing before you used Holguin Trades?</li>
             <li>How did Holguin Trades specifically help you?</li>
@@ -204,67 +218,56 @@
             Remember, adding the <strong>"why"</strong> to a testimonial makes it more likely to be included in the front page of our site. Look at the below examples.
         </div>
 
-        <!-- ───────────────── Example testimonials ───────────────── -->
         <div style="margin-bottom:1.8rem;">
             <p>“John Doe is a fantastic instructor. I mastered parallel parking in under an hour.”</p>
             <p>“John Doe has taught me so much! His knowledge of engines and mechanics is impressive.”</p>
             <p>“The session that John Doe put together was fantastic. He was calm and interacted with all of us.”</p>
         </div>
 
-        <!-- ───────────────── The FORM ───────────────── -->
+        <div id="generalFormError" class="error-message" style="display:none;"></div>
+
         <form id="testimonialForm"
               action="https://submit-form.com/AwLKMKncF"
               method="POST"
               enctype="multipart/form-data">
 
-            <!-- Honeypot -->
             <div class="honeypot">
-                <input type="text" name="website" id="website" autocomplete="off">
+                <label for="website-hp">Ignore this</label> <input type="text" name="website-hp" id="website-hp" autocomplete="off" tabindex="-1">
             </div>
 
-            <!-- Name -->
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" maxlength="60" placeholder="Enter your name">
             </div>
 
-            <!-- Email -->
             <div class="form-group">
                 <label for="email">Email *</label>
                 <input type="email" id="email" name="email" maxlength="60" placeholder="Enter your email" required>
             </div>
 
-            <!-- Industry -->
             <div class="form-group">
                 <label for="industry">Industry</label>
                 <select id="industry" name="industry">
                     <option value="">Select your industry</option>
-                    <!-- dynamically populated -->
-                </select>
+                    </select>
             </div>
 
-            <!-- Job Title -->
             <div class="form-group">
                 <label for="jobTitle">Job Title</label>
                 <input type="text" id="jobTitle" name="jobTitle" maxlength="80" placeholder="Enter your job title">
             </div>
 
-            <!-- Country -->
             <div class="form-group">
                 <label for="country">Country</label>
                 <select id="country" name="country">
-                    <option value="United States">United States</option>
-                    <!-- dynamically populated -->
-                </select>
+                    </select>
             </div>
 
-            <!-- City -->
             <div class="form-group">
                 <label for="city">City</label>
                 <input type="text" id="city" name="city" maxlength="50" placeholder="Enter your city">
             </div>
 
-            <!-- Rating -->
             <div class="form-group">
                 <label for="rating">Rating *</label>
                 <select id="rating" name="rating" required>
@@ -276,7 +279,6 @@
                 </select>
             </div>
 
-            <!-- Service -->
             <div class="form-group">
                 <label for="service">Service</label>
                 <select id="service" name="service">
@@ -288,26 +290,22 @@
                 </select>
             </div>
 
-            <!-- Photo Upload -->
             <div class="form-group">
-                <label for="photo">Add a face to your testimonial!</label>
-                <div class="file-upload">
-                    <input type="file" id="photo" name="photo" accept=".jpg,.jpeg,.png,.pdf,image/jpeg,image/png">
-                    <p>Testimonials with photos are more impactful; don't miss the opportunity to shine!</p>
+                <label for="photo">Add a face to your testimonial! (Photo)</label>
+                <div class="file-upload" onclick="document.getElementById('photo').click();">
+                    <input type="file" id="photo" name="photo" accept=".jpg,.jpeg,.png,.pdf,image/jpeg,image/png" style="display:none;">
+                    <p id="photoFileName">Click to upload JPG, JPEG, PNG, or PDF. Testimonials with photos are more impactful!</p>
                 </div>
             </div>
 
-            <!-- Video / Audio Upload -->
             <div class="form-group">
                 <label for="media">Video/Audio Testimonial Upload</label>
-                <div class="file-upload">
-                    <input type="file" id="media" name="media"
-                           accept="video/*,audio/*">
-                    <p>Testimonials with video/audio are more impactful; don't miss the opportunity to shine!</p>
+                <div class="file-upload" onclick="document.getElementById('media').click();">
+                    <input type="file" id="media" name="media" accept="video/*,audio/*" style="display:none;">
+                    <p id="mediaFileName">Click to upload video or audio. These are highly impactful!</p>
                 </div>
             </div>
 
-            <!-- Testimonial Text -->
             <div class="form-group">
                 <label for="testimonial">Testimonial *</label>
                 <textarea id="testimonial" name="testimonial"
@@ -315,7 +313,6 @@
                           placeholder="Type your testimonial here (400–1,300 characters recommended)"></textarea>
             </div>
 
-            <!-- Consent Legal -->
             <div class="consent-section">
                 <p>
                     I confirm that I am the sole author of this testimonial and that it reflects my honest opinions
@@ -331,30 +328,27 @@
                     I release The Business and its representatives from any claims, demands, or liability arising out
                     of or related to the use of my testimonial.
                 </p>
-
                 <div class="checkbox-group">
                     <input type="checkbox" id="consent" name="consent" required checked>
                     <label for="consent">
-                        By checking this box, I verify that I have read, understand and agree to the above statement
+                        By checking this box, I verify that I have read, understand and agree to the above statement.
                     </label>
                 </div>
             </div>
 
-            <!-- Thank-you CTA line -->
             <div class="thank-you-section">
                 <h4>
                     THANK YOU — We truly hope your testimonial was so out of this world that we must feature it on our main website page!
                 </h4>
             </div>
 
-            <!-- Cloudflare Turnstile -->
-            <div class="cf-turnstile" data-sitekey="0x4AAAAAABd9WX40ycLOMMtB"></div>
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAABd9WX40ycLOMMtB" data-callback="turnstileCallback"></div>
+            <input type="hidden" name="cf-turnstile-response" id="cf-turnstile-response-field">
 
-            <!-- Submit -->
-            <button type="submit">Submit Testimonial</button>
+
+            <button type="submit" id="submitBtn" style="margin-top:1.5rem;">Submit Testimonial</button>
         </form>
 
-        <!-- ───────────────── Success Modal ───────────────── -->
         <div id="successModal" class="modal">
             <div class="modal-content">
                 <span class="modal-close">&times;</span>
@@ -365,101 +359,224 @@
         </div>
     </div>
 
-    <!-- ───────────────── Scripts ───────────────── -->
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <script>
-        /* ─── Populate Industry & Country dropdowns ─── */
-        const industries = [
-          "Finance","Technology","Healthcare","Education",
-          "Manufacturing","Retail","Real Estate","Energy",
-          "Transportation","Government","Hospitality","Media & Entertainment",
-          "Telecommunications","Agriculture","Non-Profit","Other"
-        ];
+        document.addEventListener('DOMContentLoaded', () => {
+            const industries = [
+                "Finance","Technology","Healthcare","Education",
+                "Manufacturing","Retail","Real Estate","Energy",
+                "Transportation","Government","Hospitality","Media & Entertainment",
+                "Telecommunications","Agriculture","Non-Profit","Other"
+            ];
 
-        const countries = [
-          "United States","Canada","Mexico","United Kingdom","Germany","France","Spain","Italy",
-          "Netherlands","Australia","New Zealand","South Africa","Egypt","United Arab Emirates",
-          "India","China","Japan","Singapore","Brazil","Argentina","Other"
-        ];
-
-        /* populate lists */
-        const industrySel = document.getElementById('industry');
-        const countrySel  = document.getElementById('country');
-        industries.forEach(val=>{
-            const opt=document.createElement('option');opt.value=val;opt.textContent=val;
-            industrySel.appendChild(opt);
-        });
-        countries.forEach(val=>{
-            const opt=document.createElement('option');opt.value=val;opt.textContent=val;
-            countrySel.appendChild(opt);
-        });
-
-        /* ─── Modal logic ─── */
-        const modal     = document.getElementById('successModal');
-        const closeBtn  = document.querySelector('.modal-close');
-        closeBtn.onclick = () => {
-            modal.style.display='none';
-            window.location.href='https://holguintrades.com/thank-you';
-        };
-        window.onclick = (e) => {
-            if(e.target===modal){
-                modal.style.display='none';
-                window.location.href='https://holguintrades.com/thank-you';
+            let countries = [ // Changed to let for prepending
+                // "United States" will be added first if not present
+                "Canada","Mexico","United Kingdom","Germany","France","Spain","Italy",
+                "Netherlands","Australia","New Zealand","South Africa","Egypt","United Arab Emirates",
+                "India","China","Japan","Singapore","Brazil","Argentina","Other"
+            ];
+            // Ensure "United States" is the first option and present only once
+            if (!countries.includes("United States")) {
+                countries.unshift("United States");
+            } else {
+                countries = ["United States", ...countries.filter(c => c !== "United States")];
             }
-        };
 
-        /* ─── File-type validation ─── */
-        document.getElementById('photo').addEventListener('change', e=>{
-            const f=e.target.files[0];
-            if(f && !['image/jpeg','image/png','application/pdf'].includes(f.type)){
-                alert('Please upload JPG, JPEG, PNG, or PDF files only.');
-                e.target.value='';
-            }
-        });
-        document.getElementById('media').addEventListener('change', e=>{
-            const f=e.target.files[0];
-            if(f && !f.type.startsWith('video/') && !f.type.startsWith('audio/')){
-                alert('Please upload video or audio files (no images/docs).');
-                e.target.value='';
-            }
-        });
 
-        /* ─── Form submission ─── */
-        document.getElementById('testimonialForm').addEventListener('submit', async (evt)=>{
-            evt.preventDefault();
-            const form    = evt.target;
-            const data    = new FormData(form);
+            const industrySel = document.getElementById('industry');
+            const countrySel  = document.getElementById('country');
 
-            /* honeypot */
-            if(data.get('website')) return;
+            industries.forEach(val => {
+                const opt = document.createElement('option');
+                opt.value = val;
+                opt.textContent = val;
+                industrySel.appendChild(opt);
+            });
 
-            /* wait for Turnstile */
-            if(typeof turnstile==='undefined'){
-                alert('Please wait for the security check to load.');
-                return;
-            }
-            const tsWidget = document.querySelector('.cf-turnstile');
-            const tsToken  = turnstile.getResponse(tsWidget);
-            if(!tsToken){
-                alert('Please complete the security check.');
-                return;
-            }
-            data.append('cf-turnstile-response', tsToken);
+            countries.forEach(val => {
+                const opt = document.createElement('option');
+                opt.value = val;
+                opt.textContent = val;
+                countrySel.appendChild(opt);
+            });
+            // Set default selected for country if "United States" is the desired default
+            countrySel.value = "United States";
 
-            try{
-                await fetch(form.action,{
-                    method:'POST',
-                    body:data,
-                    mode:'no-cors',
-                    redirect:'follow'
-                });
-                modal.style.display='block';
-                form.reset();
-                window.scrollTo({top:0,behavior:'smooth'});
-            }catch(err){
-                console.error('Submission error:',err);
-                alert('There was an error submitting your testimonial. Please try again.');
+
+            const modal      = document.getElementById('successModal');
+            const closeBtn   = document.querySelector('.modal-close');
+            const testimonialForm = document.getElementById('testimonialForm');
+            const submitButton    = document.getElementById('submitBtn');
+            const generalFormError = document.getElementById('generalFormError');
+
+            function displayFormError(message) {
+                generalFormError.textContent = message;
+                generalFormError.style.display = 'block';
+                window.scrollTo({top: generalFormError.offsetTop - 20, behavior: 'smooth'});
             }
+
+            function clearFormError() {
+                generalFormError.textContent = '';
+                generalFormError.style.display = 'none';
+            }
+
+            closeBtn.onclick = () => {
+                modal.style.display = 'none';
+                // Optional: Redirect after closing modal
+                // window.location.href = 'https://holguintrades.com/thank-you';
+            };
+            window.onclick = (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    // Optional: Redirect after closing modal by clicking outside
+                    // window.location.href = 'https://holguintrades.com/thank-you';
+                }
+            };
+
+            // File input display name logic
+            const photoInput = document.getElementById('photo');
+            const photoFileName = document.getElementById('photoFileName');
+            const mediaInput = document.getElementById('media');
+            const mediaFileName = document.getElementById('mediaFileName');
+
+            photoInput.addEventListener('change', function() {
+                if (this.files && this.files.length > 0) {
+                    photoFileName.textContent = this.files[0].name;
+                    // File type validation (client-side)
+                    const f = this.files[0];
+                    if (!['image/jpeg','image/png','application/pdf'].includes(f.type)) {
+                        alert('For photos, please upload JPG, JPEG, PNG, or PDF files only.');
+                        this.value = ''; // Clear the invalid file
+                        photoFileName.textContent = 'Click to upload JPG, JPEG, PNG, or PDF...';
+                    }
+                } else {
+                    photoFileName.textContent = 'Click to upload JPG, JPEG, PNG, or PDF...';
+                }
+            });
+
+            mediaInput.addEventListener('change', function() {
+                if (this.files && this.files.length > 0) {
+                    mediaFileName.textContent = this.files[0].name;
+                    // File type validation (client-side)
+                    const f = this.files[0];
+                     if(f && !f.type.startsWith('video/') && !f.type.startsWith('audio/')){
+                        alert('For media, please upload video or audio files only (no images/docs).');
+                        this.value = ''; // Clear the invalid file
+                        mediaFileName.textContent = 'Click to upload video or audio...';
+                    }
+                } else {
+                    mediaFileName.textContent = 'Click to upload video or audio...';
+                }
+            });
+
+
+            // Callback for Turnstile (optional, can be used to enable submit or for logic)
+            window.turnstileCallback = function (token) {
+                // You can use this callback if needed, for example, to enable the submit button
+                // Or, you can just rely on getResponse() before submission
+                // console.log("Turnstile token:", token);
+                document.getElementById('cf-turnstile-response-field').value = token;
+            };
+
+            testimonialForm.addEventListener('submit', async (evt) => {
+                evt.preventDefault();
+                clearFormError(); // Clear previous errors
+                submitButton.disabled = true;
+                submitButton.textContent = 'Submitting...';
+
+                const form = evt.target;
+                const data = new FormData(form);
+
+                // Honeypot check
+                if (data.get('website-hp')) { // Updated honeypot name
+                    console.log("Honeypot triggered. Submission aborted.");
+                    // Silently abort, or you might want to give a generic error
+                    // to avoid alerting bots they've been caught.
+                    submitButton.disabled = false; // Re-enable for legitimate users if it was a mistake
+                    submitButton.textContent = 'Submit Testimonial';
+                    return;
+                }
+
+                // Ensure Turnstile is loaded and get token
+                if (typeof turnstile === 'undefined') {
+                    displayFormError('Security check (Turnstile) is not yet loaded. Please wait a moment and try again.');
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Submit Testimonial';
+                    return;
+                }
+                const tsWidget = document.querySelector('.cf-turnstile');
+                const tsToken = turnstile.getResponse(tsWidget);
+
+                if (!tsToken) {
+                    displayFormError('Please complete the security check before submitting.');
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Submit Testimonial';
+                    // It's good practice to explicitly ask Turnstile to try again if possible
+                    // turnstile.reset(tsWidget); // Or prompt user to click it.
+                    return;
+                }
+                // The hidden input `cf-turnstile-response` should be automatically populated by Turnstile if `data-callback` is used effectively
+                // or if you set it via `document.getElementById('cf-turnstile-response-field').value = tsToken;`
+                // FormData will pick it up if the hidden input has the token.
+                // If you are not using the hidden input field and Turnstile adds it automatically, great.
+                // Otherwise, explicitly add it to FormData if not using a hidden input for it.
+                if (!data.has('cf-turnstile-response') || !data.get('cf-turnstile-response')) {
+                     data.append('cf-turnstile-response', tsToken); // Ensure it's added if not already by hidden field
+                }
+
+
+                try {
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        body: data,
+                        // Removed mode: 'no-cors'. Default is 'cors'.
+                        // If submit-form.com doesn't send proper CORS headers for POST,
+                        // this will likely result in a TypeError caught below.
+                        // In that case, you might need to contact submit-form.com or revert to 'no-cors'
+                        // (but then you lose the ability to read the server response in JS).
+                        headers: {
+                            'Accept': 'application/json' // It's good practice to tell the server what you accept.
+                                                        // submit-form.com might ignore this or use it.
+                        }
+                    });
+
+                    if (response.ok) { // HTTP status 200-299
+                        modal.style.display = 'flex'; // Use flex for centering modal
+                        form.reset();
+                        // Reset file input display names
+                        photoFileName.textContent = 'Click to upload JPG, JPEG, PNG, or PDF...';
+                        mediaFileName.textContent = 'Click to upload video or audio...';
+                        if (typeof turnstile !== 'undefined' && tsWidget) {
+                            turnstile.reset(tsWidget); // Reset Turnstile widget
+                        }
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    } else {
+                        // Server responded with an error status (e.g., 4xx, 5xx)
+                        let errorMessage = `Submission failed. Server responded with status: ${response.status}.`;
+                        try {
+                            // Try to get more details from the response body
+                            const errorData = await response.json(); // Or response.text()
+                            errorMessage += `\nDetails: ${typeof errorData === 'string' ? errorData : JSON.stringify(errorData)}`;
+                        } catch (e) {
+                            errorMessage += `\nCould not parse error details from the server. Check the Network tab in your browser's developer tools for the raw response.`;
+                        }
+                        displayFormError(errorMessage);
+                        console.error('Submission error details:', response);
+                    }
+                } catch (err) {
+                    // Network error, CORS error, or other issue with fetch itself
+                    console.error('Submission fetch/network error:', err);
+                    let detailedError = 'There was an error submitting your testimonial. Please check your internet connection and try again.';
+                    if (err instanceof TypeError && err.message.toLowerCase().includes('failed to fetch')) {
+                        detailedError += '\nThis might be due to a network issue or a CORS policy blocking the request. Please check the browser console (F12) for more specific error messages related to CORS.';
+                        detailedError += '\nIf you see CORS errors, the server at ' + form.action + ' may not be configured to accept requests from your website\'s domain.';
+                    }
+                    displayFormError(detailedError);
+                } finally {
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Submit Testimonial';
+                }
+            });
         });
     </script>
 </body>
