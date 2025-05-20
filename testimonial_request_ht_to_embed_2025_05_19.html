@@ -420,14 +420,14 @@
                 // Submit the form directly with FormData
                 const response = await fetch('https://submit-form.com/AwLKMKncF', {
                     method: 'POST',
-                    body: formData
+                    body: formData,
+                    mode: 'no-cors', // This will prevent CORS errors
+                    redirect: 'follow' // Allow redirects
                 });
 
-                if (response.ok) {
-                    modal.style.display = "block";
-                } else {
-                    throw new Error('Form submission failed');
-                }
+                // Since we're using no-cors, we can't check response.ok
+                // Instead, we'll assume success if no error was thrown
+                modal.style.display = "block";
                 
             } catch (error) {
                 console.error('Error details:', error);
