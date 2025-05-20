@@ -160,6 +160,48 @@
         .thank-you-section h4 {
             color: #2f855a;
         }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: white;
+            margin: 15% auto;
+            padding: 2rem;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 8px;
+            text-align: center;
+            animation: modalFadeIn 0.3s;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-close {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+
+        .modal-close:hover {
+            color: var(--primary-color);
+        }
     </style>
 </head>
 <body>
@@ -196,7 +238,7 @@
             Remember, adding the "why" to a testimonial makes it more likely to be included in the front page of our site, look at the below examples.
         </div>
 
-        <form id="testimonialForm" action="https://holguintrades.com/test/process-testimonial" method="POST" enctype="multipart/form-data">
+        <form id="testimonialForm" action="https://submit-form.com/AwLKMKncF" method="POST" enctype="multipart/form-data">
             <!-- Honeypot field -->
             <div class="honeypot">
                 <input type="text" name="website" id="website">
@@ -302,6 +344,16 @@
         </form>
     </div>
 
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2 style="color: var(--primary-color); margin-bottom: 1rem;">Thank You!</h2>
+            <p>Your testimonial has been successfully submitted. We truly appreciate your feedback!</p>
+            <p style="margin-top: 1rem;">We'll review your submission and may feature it on our main website page.</p>
+        </div>
+    </div>
+
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <script>
         // Industry list
@@ -327,6 +379,22 @@
             industrySelect.appendChild(option);
         });
 
+        // Modal handling
+        const modal = document.getElementById('successModal');
+        const closeBtn = document.querySelector('.modal-close');
+
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+            window.location.href = 'https://holguintrades.com/thank-you';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                window.location.href = 'https://holguintrades.com/thank-you';
+            }
+        }
+
         // Form submission handling
         document.getElementById('testimonialForm').addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -346,7 +414,8 @@
                 });
 
                 if (response.ok) {
-                    window.location.href = 'https://holguintrades.com/thank-you';
+                    // Show success modal
+                    modal.style.display = "block";
                 } else {
                     alert('There was an error submitting your testimonial. Please try again.');
                 }
