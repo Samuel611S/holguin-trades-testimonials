@@ -93,9 +93,11 @@
             margin-bottom: 0;
         }
 
+        /* Emphasis added for highlight class */
         .highlight {
-            font-weight: 600;
+            font-weight: 700; /* Bolder */
             color: var(--primary-color);
+            text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.1); /* Subtle shadow */
         }
 
         .examples {
@@ -216,20 +218,30 @@
             border-color: var(--accent-color);
         }
 
+        /* Emphasis added for thank-you section */
         .thank-you {
             text-align: center;
             margin-top: 2rem;
             padding: 1.5rem;
-            background: #ebf8ff;
+            background: #e6fffa; /* Slightly different background for "THANK YOU" */
             border-radius: 8px;
             border-left: 4px solid var(--success-color);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+        }
+
+        .thank-you h4 {
+            font-size: 1.4rem; /* Larger font for heading */
+            color: var(--success-color); /* Green color for success */
+            margin-bottom: 0.5rem;
         }
 
         .thank-you p {
             font-size: 1.1rem;
-            font-weight: 500;
+            font-weight: 600; /* Bolder text */
             color: var(--primary-color);
+            text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.05); /* Subtle shadow */
         }
+
 
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -316,7 +328,6 @@
 
             <label for="country">Country</label>
             <select id="country" name="country">
-            <!-- Country options will be populated via JS -->
             </select>
             <label for="city">City</label>
             <input type="text" id="city" name="city" maxlength="50" placeholder="Enter your city" />
@@ -339,13 +350,22 @@
                 <option value="General">General</option>
                 </select>
                 
-            <label for="message">Testimonial</label>
+            <label for="testimonial">Testimonial</label>
             <textarea
-              id="message"
-              name="message"
-              placeholder="Message"
+              id="testimonial"
+              name="testimonial"
+              placeholder="Testimonial"
               required=""
             ></textarea>
+
+            <div class="consent-section">
+                <p>By submitting this testimonial, you acknowledge and agree that Holguin Trades may use your testimonial, including any submitted photos, audio, or video, for marketing, promotional, and advertising purposes across various platforms, including but not limited to our website, social media, and other promotional materials. You grant Holguin Trades a non-exclusive, royalty-free, worldwide license to use, display, reproduce, and distribute your testimonial in connection with our services. Your personal information, such as your full name, will only be used with your explicit consent or as otherwise stated in our privacy policy.</p>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="consentCheckbox" name="consentMarketing" value="agreed" checked required>
+                    <label for="consentCheckbox">By checking this box, I verify that I have read, understand and agree to the above statement.</label>
+                </div>
+            </div>
+
             <button type="submit">Send</button>
           </form>
 
@@ -362,11 +382,9 @@
       "Government", "Nonprofit", "Aerospace", "Automotive", "Entertainment"
     ];
     const countries = [
-      "United States", "Canada", "Mexico", "Brazil", "United Kingdom", "Germany",
-      "France", "Italy", "Spain", "Netherlands", "Australia", "New Zealand",
-      "Japan", "South Korea", "China", "India", "South Africa", "Egypt",
-      "Turkey", "Russia"
-    ];
+  "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo (Congo-Brazzaville)", "Costa Rica", "Côte d'Ivoire", "Croatia", "Cuba", "Cyprus", "Czechia (Czech Republic)", "Democratic Republic of the Congo", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini (fmr. 'Swaziland')", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Holy See", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Macedonia", "Norway", "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Korea", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden",
+  "Switzerland", "Syria", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
+];
 
     const industrySelect = document.getElementById('industry');
     industries.forEach(ind => {
