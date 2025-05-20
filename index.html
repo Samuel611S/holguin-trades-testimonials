@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Holguin Trades Testimonial Form</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"/>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <style>
+    :root {
+      --bg: #121212;
+      --card-bg: #1e1e1e;
+      --text: #f1f1f1;
+      --accent: #0077cc;
+      --accent-dark: #005fa3;
+      --border: #333;
+      --modal-bg: rgba(0, 0, 0, 0.8);
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    header img {
+      max-width: 180px;
+      animation: fadeInDown 1s ease;
+    }
+
+    h1, h2, p, label {
+      color: var(--text);
+    }
+
+    form {
+      max-width: 720px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+      animation: fadeInUp 1s ease;
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 0.6rem;
+      margin-top: 0.25rem;
+      background: #2c2c2c;
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      transition: border 0.3s, background 0.3s;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--accent);
+      outline: none;
+      background: #333;
+    }
+
+    .progress-bar {
+      height: 6px;
+      background: #333;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    button {
+      background: var(--accent);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      margin-top: 1.5rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: var(--accent-dark);
+    }
+
+    .spinner {
+      display: none;
+      margin: 1rem auto;
+      border: 4px solid #444;
+      border-top: 4px solid var(--accent);
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      animation: spin 1s linear infinite;
+    }
+
+    .thank-you-modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: var(--modal-bg);
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .thank-you-modal-content {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 400px;
+      text-align: center;
+      animation: fadeIn 0.5s ease-in-out;
+      color: var(--text);
+    }
+
+    .emphasize {
+      background-color: #1a2633;
+      padding: 0.5rem;
+      border-left: 4px solid var(--accent);
+      margin: 1rem 0;
+      font-style: italic;
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    /* Animations */
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="primary_website_logo1_ht_2025May16.svg" alt="Holguin Trades Logo" />
+    <h1>Holguin Trades Testimonial Request Form</h1>
+    <h2 class="emphasize">Submit a testimonial on any of Holguin Trades services to have a chance to get featured in our main website page!<br>
+    Testimonials with photos, audio and/or video have a higher chance, don't miss the opportunity!</h2>
+    <p>We'd love to hear about your experience with Holguin Trades. Your feedback helps us grow and serve better!</p>
+    <p><a href="https://holguintrades.com/testimonials.html" target="_blank">See previous testimonials →</a></p>
+  </header>
+
+  <form id="testimonialForm" action="https://submit-form.com/AwLKMKncF" method="POST" enctype="multipart/form-data">
+    <div class="progress-bar"><div class="progress-bar-fill" id="progressFill"></div></div>
+
+    <label for="name">Name</label>
+    <input type="text" name="name" maxlength="60" placeholder="Enter your name"/>
+
+    <label for="email">Email *</label>
+    <input type="email" name="email" required placeholder="Enter your email"/>
+
+    <label for="industry">Industry</label>
+    <select name="industry">
+      <option value="">Select industry</option>
+      <option value="Finance">Finance</option>
+      <option value="Tech">Tech</option>
+      <option value="Healthcare">Healthcare</option>
+      <option value="Education">Education</option>
+    </select>
+
+    <label for="job">Job Title</label>
+    <input type="text" name="job" maxlength="80" placeholder="Enter your job title"/>
+
+    <label for="country">Country</label>
+    <select name="country">
+      <option value="United States">United States</option>
+      <option value="Canada">Canada</option>
+      <option value="United Kingdom">United Kingdom</option>
+      <option value="Other">Other</option>
+    </select>
+
+    <label for="city">City</label>
+    <input type="text" name="city" maxlength="50" placeholder="Enter your city"/>
+
+    <label for="rating">Rating *</label>
+    <select name="rating" required>
+      <option value="5">5 (Best)</option>
+      <option value="4">4</option>
+      <option value="3">3</option>
+      <option value="2">2</option>
+      <option value="1">1 (Worst)</option>
+    </select>
+
+    <label for="photo">Photo Upload</label>
+    <input type="file" name="photo" accept=".jpg,.jpeg,.png,.pdf"/>
+
+    <label for="media">Video/Audio Upload</label>
+    <input type="file" name="media" accept="audio/*,video/*"/>
+
+    <label for="service">Service</label>
+    <select name="service">
+      <option value="">Select a service</option>
+      <option value="Signal Alerts">Signal Alerts</option>
+      <option value="Coaching">Coaching</option>
+      <option value="Public/Motivational Events">Public/Motivational Events</option>
+      <option value="General">General</option>
+    </select>
+
+    <label for="testimonial">Testimonial *</label>
+    <textarea name="testimonial" maxlength="1300" required placeholder="Type your testimonial here..."></textarea>
+
+    <input type="text" name="extra_field" style="display:none"/>
+    <!-- <div class="cf-turnstile" data-sitekey="0x4AAAAAABd9WX40ycLOMMtB"></div> -->
+
+    <label>
+      <input type="checkbox" name="consent" required checked />
+      By checking this box, I verify that I have read, understand and agree to the above statement.
+    </label>
+
+    <div class="spinner" id="spinner"></div>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <div class="thank-you-modal" id="thankYouModal">
+    <div class="thank-you-modal-content">
+      <h4>THANK YOU!</h4>
+      <p>We truly hope your testimonial was so out of this world that we must feature it in our main website page!</p>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('testimonialForm');
+    const spinner = document.getElementById('spinner');
+    const modal = document.getElementById('thankYouModal');
+    const progressFill = document.getElementById('progressFill');
+
+    // All form inputs (exclude hidden)
+    const inputs = Array.from(form.querySelectorAll('input, select, textarea')).filter(i => i.type !== 'hidden');
+
+    // Update progress bar based on filled inputs
+    function updateProgress() {
+      const filled = inputs.filter(i => i.value.trim()).length;
+      const percent = Math.round((filled / inputs.length) * 100);
+      progressFill.style.width = percent + '%';
+    }
+
+    inputs.forEach(input => input.addEventListener('input', updateProgress));
+
+    // Async submit with fetch to Formspark
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      spinner.style.display = 'block';
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        spinner.style.display = 'none';
+
+        if (response.ok) {
+          modal.style.display = 'flex';
+          form.reset();
+          progressFill.style.width = '0%';
+        } else {
+          alert('There was a problem submitting your testimonial. Please try again.');
+        }
+      } catch (error) {
+        spinner.style.display = 'none';
+        alert('Network error. Please check your connection and try again.');
+      }
+    });
+
+    // Close thank you modal on click
+    modal.addEventListener('click', () => modal.style.display = 'none');
+
+  </script>
+
+</body>
+</html>
