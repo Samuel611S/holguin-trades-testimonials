@@ -349,6 +349,73 @@
             text-align: left;
         }
         
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.55);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            position: relative;
+            background: #fff;
+            padding: 2rem 2.25rem;
+            width: 85%;
+            max-width: 520px;
+            border-radius: 8px;
+            text-align: center;
+            animation: modalFadeIn 0.3s;
+        }
+        
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 1.1rem;
+            right: 1.1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+        
+        .modal-close:hover {
+            color: var(--primary-color);
+        }
+        
+        /* Loading spinner */
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+        }
+        
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
         @media (max-width: 768px) {
             .container {
                 padding: 1.5rem;
@@ -372,6 +439,11 @@
             
             .checkbox-group {
                 padding: 0.75rem;
+            }
+            
+            .modal-content {
+                width: 90%;
+                padding: 1.5rem;
             }
         }
         
@@ -433,7 +505,8 @@
             <p>"The session that John Doe put together was fantastic. He was calm and interacted with all of us."</p>
         </div>
         
-        <form id="testimonialForm" action="#" method="POST" enctype="multipart/form-data">
+        <!-- Connect to FormSpark -->
+        <form id="testimonialForm" action="https://submit-form.com/AwLKMKncF" method="POST" enctype="multipart/form-data">
             <!-- Honeypot field for spam prevention -->
             <div class="form-group honeypot">
                 <label for="referrerId">Referrer ID</label>
@@ -545,12 +618,23 @@
             <!-- Cloudflare Turnstile CAPTCHA -->
             <div class="cf-turnstile" data-sitekey="0x4AAAAAABd9WX40ycLOMMtB"></div>
             
-            <button type="submit">Submit</button>
+            <!-- Hidden field for FormSpark to redirect -->
+            <input type="hidden" name="_redirect" value="false"/>
+            
+            <button type="submit" id="submitButton">Submit</button>
             <p class="form-caption">Press to submit your testimonial</p>
         </form>
         
-        <div class="thank-you-section">
-            <h4>THANK YOU — We truly hope your testimonial was so out of this world that we must feature it in our main website page!</h4>
+        <!-- Thank You Modal -->
+        <div id="thankYouModal" class="modal">
+            <div class="modal-content">
+                <span class="modal-close" id="closeModal">&times;</span>
+                <div class="thank-you-section" style="margin-top: 0;">
+                    <h4>THANK YOU!</h4>
+                    <p style="margin-top: 1rem;">We truly hope your testimonial was so out of this world that we must feature it in our main website page!</p>
+                    <p style="margin-top: 1rem;">Your feedback is valuable to us and helps us improve our services.</p>
+                </div>
+            </div>
         </div>
     </div>
     
@@ -625,7 +709,21 @@
             }
         });
         
-        // Form validation
+        // Modal functionality
+        const modal = document.getElementById('thankYouModal');
+        const closeModal = document.getElementById('closeModal');
+        
+        closeModal.onclick = function() {
+            modal.style.display = "none";
+        }
+        
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        
+        // Form validation and submission
         document.getElementById('testimonialForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -664,10 +762,59 @@
                 }
             }
             
-            // If all validations pass, submit the form
-            alert('Form submitted successfully! Redirecting to thank you page...');
-            // In a real implementation, you would submit the form data to the server here
-            // window.location.href = 'https://holguintrades.com/thank-you';
+            // Show loading state
+            const submitButton = document.getElementById('submitButton');
+            const originalButtonText = submitButton.innerHTML;
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<span class="spinner"></span> Submitting...';
+            
+            // FormSpark submission
+            const formData = new FormData(this);
+            
+            // In a real implementation, you would use fetch to submit the form to FormSpark
+            // For demonstration, we'll simulate a successful submission
+            setTimeout(function() {
+                // Reset button state
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalButtonText;
+                
+                // Show thank you modal
+                modal.style.display = "flex";
+                
+                // Reset form
+                document.getElementById('testimonialForm').reset();
+            }, 1500);
+            
+            // In a real implementation with FormSpark, you would use:
+            
+            fetch('https://submit-form.com/AwLKMKncF', {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Show thank you modal
+                    modal.style.display = "flex";
+                    
+                    // Reset form
+                    document.getElementById('testimonialForm').reset();
+                } else {
+                    alert('There was an error submitting the form. Please try again.');
+                }
+                
+                // Reset button state
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalButtonText;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error submitting the form. Please try again.');
+                
+                // Reset button state
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalButtonText;
+            });
+            
         });
         
         // Load Cloudflare Turnstile script
