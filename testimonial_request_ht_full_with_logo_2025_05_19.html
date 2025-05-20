@@ -299,65 +299,53 @@
 
         <h4>Questions</h4>
         <form action="https://submit-form.com/AwLKMKncF">
+            <input type="hidden" name="_redirect" value="https://holguintrades.com/thank-you" />
+            <input type="text" name="confirm_code_field" class="hidden" autocomplete="off" /> <!-- Honeypot -->
+
             <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Name" required="" />
+            <input type="text" id="name" name="name" maxlength="60" placeholder="Enter your name" required/>
+
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Email" required="" />
+            <input type="email" id="email" name="email" maxlength="60" placeholder="Enter your email" required />
+
             <label for="industry">Industry</label>
-            <select name="industry" id="industry">
-                <option value="technology">Technology</option>
-                <option value="healthcare">Healthcare</option>
-                <option value="finance">Finance</option>
-                <option value="education">Education</option>
-                <option value="manufacturing">Manufacturing</option>
-                <option value="retail">Retail</option>
-                <option value="hospitality">Hospitality</option>
-                <option value="transportation">Transportation</option>
-                <option value="construction">Construction</option>
-                <option value="real-estate">Real Estate</option>
-                <option value="energy">Energy</option>
-                <option value="telecommunications">Telecommunications</option>
-                <option value="agriculture">Agriculture</option>
-                <option value="legal">Legal</option>
-                <option value="media">Media</option>
-                <option value="government">Government</option>
-                <option value="nonprofit">Nonprofit</option>
-                <option value="aerospace">Aerospace</option>
-                <option value="automotive">Automotive</option>
-                <option value="entertainment">Entertainment</option>
+            <select id="industry" name="industry">
+            <option value="">-- Select an Industry --</option>
             </select>
+
             <label for="jobTitle">Job Title</label>
-            <input type="text" id="jobTitle" name="jobTitle" placeholder="Job Title" required="" />
-            <label for="message">Message</label>
+            <input type="text" id="jobTitle" name="jobTitle" maxlength="80" placeholder="Enter your job title" />
+
+            <label for="country">Country</label>
+            <select id="country" name="country">
+            <!-- Country options will be populated via JS -->
+            </select>
+            <label for="city">City</label>
+            <input type="text" id="city" name="city" maxlength="50" placeholder="Enter your city" />
+
+            <label for="Rating">Rating</label>
+            <select name="Rating" required>
+                <option value="5">5</option>
+                <option value="4">4</option>
+                <option value="3">3</option>
+                <option value="2">2</option>
+                <option value="1">1</option>
+            </select>
+            <label for="Service">Service</label>
+                <select name="Service" id="Service" required>
+                <option value="">-- Select a Service --</option>
+                <option value="Signal Alerts">Signal Alerts</option>
+                <option value="Coaching">Coaching</option>
+                <option value="Public/Motivational Events">Public/Motivational Events</option>
+                <option value="General">General</option>
+                </select>
+            <label for="message">Testimonial</label>
             <textarea
               id="message"
               name="message"
               placeholder="Message"
               required=""
             ></textarea>
-            <label for="Country">Country</label>
-            <select name="Country">
-                <option value="united-states">United States</option>
-                <option value="canada">Canada</option>
-                <option value="mexico">Mexico</option>
-                <option value="brazil">Brazil</option>
-                <option value="united-kingdom">United Kingdom</option>
-                <option value="germany">Germany</option>
-                <option value="france">France</option>
-                <option value="italy">Italy</option>
-                <option value="spain">Spain</option>
-                <option value="netherlands">Netherlands</option>
-                <option value="australia">Australia</option>
-                <option value="new-zealand">New Zealand</option>
-                <option value="japan">Japan</option>
-                <option value="south-korea">South Korea</option>
-                <option value="china">China</option>
-                <option value="india">India</option>
-                <option value="south-africa">South Africa</option>
-                <option value="egypt">Egypt</option>
-                <option value="turkey">Turkey</option>
-                <option value="russia">Russia</option>
-            </select>
             <button type="submit">Send</button>
           </form>
 
