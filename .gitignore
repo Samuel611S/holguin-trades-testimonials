@@ -18,7 +18,8 @@ node_modules/
 .env
 .env.local
 .env.*.local
-
+testimonial_request_ht_full_with_logo_2025_05_19.txt
+testimonial_request_ht_to_embed_2025_05_19.txt
 # Build files
 dist/
 build/ 
