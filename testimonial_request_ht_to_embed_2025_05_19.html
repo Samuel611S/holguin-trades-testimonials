@@ -299,7 +299,7 @@
             </ul>
         </div>
         <form action="https://usebasin.com/f/95a74b99c1a8" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="_redirect" value="https://holguintrades.com/thank-you" />
+            <!-- <input type="hidden" name="_redirect" value="https://holguintrades.com/thank-you" /> -->
             <input type="text" name="_gotcha" style="display: none;" autocomplete="off" />
 
             <label for="name">Name</label>
@@ -323,7 +323,7 @@
             <input type="text" id="city" name="city" maxlength="50" placeholder="Enter your city" />
 
             <label for="rating">Rating</label>
-            <select name="rating" required>
+            <select name="rating" id="rating" required>
                 <option value="5">5</option>
                 <option value="4">4</option>
                 <option value="3">3</option>
@@ -332,13 +332,13 @@
             </select>
 
             <label for="service">Service</label>
-                <select name="service" id="service" required>
+            <select name="service" id="service" required>
                 <option value="">-- Select a Service --</option>
                 <option value="Signal Alerts">Signal Alerts</option>
                 <option value="Coaching">Coaching</option>
                 <option value="Public/Motivational Events">Public/Motivational Events</option>
-                <option value="General">General</option>
-                </select>
+                <option value="General">General</option>                    
+            </select>
                 
             <label for="testimonial">Testimonial</label>
             <textarea
@@ -349,10 +349,11 @@
             ></textarea>
 
             <h4>Upload Photo (Optional)</h4>
-            <input type="file" id="testimonialPhoto" name="image" accept="image/*">
+            <input type="file" id="testimonialPhoto" name="image" accept="image/*" />
 
-            <h4>Upload Video/Audio (Optional)</h4>
-            <input type="file" id="testimonialVideo" name="videoOrAudio" accept="video/*,audio/*">
+
+             <h4>Upload Video/Audio (Optional)</h4>
+             <input type="file" id="testimonialVideo" name="videoOrAudio" accept="video/*,audio/*" />
 
             <div class="consent-section">
                 <p>By submitting this testimonial, you acknowledge and agree that Holguin Trades may use your testimonial, including any submitted photos, audio, or video, for marketing, promotional, and advertising purposes across various platforms, including but not limited to our website, social media, and other promotional materials. You grant Holguin Trades a non-exclusive, royalty-free, worldwide license to use, display, reproduce, and distribute your testimonial in connection with our services. Your personal information, such as your full name, will only be used with your explicit consent or as otherwise stated in our privacy policy.</p>
